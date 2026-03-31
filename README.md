@@ -4,103 +4,120 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Uranus Travel & Tours — Dubai's Premier Travel Agency Since 1994</title>
-<link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&family=Jost:wght@200;300;400;500&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,500;0,600;1,400&family=Outfit:wght@200;300;400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{
-  --ink:#04080f;
-  --navy:#071428;
-  --navy2:#0b1e3a;
-  --navy3:#0e2347;
-  --blue:#1a3a6e;
-  --orange:#e8722a;
-  --orange2:#f4925a;
-  --cream:#f4f0e8;
   --white:#ffffff;
-  --gold:#c8a96e;
-  --muted:rgba(244,240,232,0.5);
-  --mutedmore:rgba(244,240,232,0.35);
+  --off:#f8f7f5;
+  --light:#f2f0ec;
+  --red:#d42b2b;
+  --red2:#b82020;
+  --red3:#e84545;
+  --ink:#0d0d0d;
+  --ink2:#1a1a1a;
+  --gray:#6b6b6b;
+  --lgray:#e8e6e2;
+  --border:#e2e0dc;
 }
+
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}
+
 body{
-  background:var(--ink);
-  color:var(--cream);
-  font-family:'Jost',sans-serif;
+  background:var(--white);
+  color:var(--ink);
+  font-family:'Outfit',sans-serif;
   font-weight:300;
   overflow-x:hidden;
 }
 
+/* ── SCANNING LINE animation ── */
+@keyframes scanLine{
+  0%{transform:translateY(-100vh);}
+  100%{transform:translateY(100vh);}
+}
+.scan-overlay{
+  position:fixed;inset:0;pointer-events:none;z-index:9999;overflow:hidden;
+}
+.scan-line{
+  position:absolute;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(212,43,43,0.3),transparent);
+  animation:scanLine 8s linear infinite;
+}
+
 /* ── TOPBAR ── */
 .topbar{
-  background:var(--navy);
-  padding:10px 60px;
+  background:var(--red);
+  padding:8px 60px;
   display:flex;justify-content:space-between;align-items:center;
-  border-bottom:1px solid rgba(232,114,42,0.15);
-  font-size:11px;letter-spacing:0.08em;
 }
-.topbar-left{display:flex;gap:28px;align-items:center;}
+.topbar-left{
+  display:flex;gap:24px;align-items:center;
+  font-size:11px;letter-spacing:0.08em;color:rgba(255,255,255,0.9);
+}
 .topbar-left a{
-  color:var(--muted);text-decoration:none;
-  display:flex;align-items:center;gap:7px;
-  transition:color 0.3s;font-size:11px;
+  color:rgba(255,255,255,0.9);text-decoration:none;
+  display:flex;align-items:center;gap:6px;
+  transition:color 0.2s;
 }
-.topbar-left a:hover{color:var(--orange);}
-.topbar-left a .ti{
-  width:14px;height:14px;opacity:0.6;flex-shrink:0;
-}
+.topbar-left a:hover{color:#fff;}
 .topbar-right{
-  display:flex;align-items:center;gap:16px;
-  color:var(--mutedmore);font-size:11px;letter-spacing:0.1em;
+  font-size:10px;letter-spacing:0.18em;text-transform:uppercase;
+  color:rgba(255,255,255,0.7);
+  display:flex;gap:16px;align-items:center;
 }
-.iata-badge{
-  background:rgba(232,114,42,0.12);
-  border:1px solid rgba(232,114,42,0.3);
-  color:var(--orange2);
-  padding:3px 10px;font-size:10px;letter-spacing:0.15em;
-  text-transform:uppercase;
+.tb-badge{
+  background:rgba(255,255,255,0.15);
+  border:1px solid rgba(255,255,255,0.3);
+  padding:3px 10px;color:#fff;font-size:10px;letter-spacing:0.15em;
 }
 
 /* ── NAV ── */
 nav{
   position:sticky;top:0;z-index:500;
-  background:rgba(7,20,40,0.97);
-  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
-  border-bottom:1px solid rgba(255,255,255,0.06);
+  background:var(--white);
+  border-bottom:1px solid var(--border);
   padding:0 60px;
   display:flex;justify-content:space-between;align-items:center;
-  height:68px;
+  height:72px;
+  box-shadow:0 1px 20px rgba(0,0,0,0.04);
 }
-.nav-logo img{
-  height:44px;object-fit:contain;
-  filter:brightness(1.1);
+.nav-logo{
+  display:flex;align-items:center;gap:12px;text-decoration:none;
 }
+.nav-logo img{height:40px;object-fit:contain;}
+.nav-logo-text{
+  font-family:'Cormorant Garamond',serif;
+  font-size:22px;font-weight:600;color:var(--ink);letter-spacing:0.04em;
+  display:none;
+}
+.nav-logo-text span{color:var(--red);}
 .nav-links{
-  display:flex;gap:0;list-style:none;height:100%;align-items:center;
+  display:flex;list-style:none;height:100%;align-items:center;gap:4px;
 }
-.nav-links li{height:100%;display:flex;align-items:center;}
 .nav-links a{
-  color:var(--cream);text-decoration:none;
-  font-size:12px;letter-spacing:0.1em;text-transform:uppercase;
-  opacity:0.65;transition:opacity 0.3s,color 0.3s;
-  padding:0 16px;height:100%;display:flex;align-items:center;
-  position:relative;
+  color:var(--ink);text-decoration:none;
+  font-size:12px;letter-spacing:0.08em;
+  padding:8px 14px;border-radius:2px;
+  opacity:0.7;transition:opacity 0.2s,background 0.2s,color 0.2s;
+  white-space:nowrap;
 }
-.nav-links a::after{
-  content:'';position:absolute;bottom:0;left:16px;right:16px;
-  height:2px;background:var(--orange);
-  transform:scaleX(0);transform-origin:center;transition:transform 0.3s;
-}
-.nav-links a:hover{opacity:1;}
-.nav-links a:hover::after{transform:scaleX(1);}
+.nav-links a:hover{opacity:1;background:var(--light);}
 .nav-book{
-  background:var(--orange);color:var(--white)!important;
-  padding:0 24px!important;opacity:1!important;
-  font-weight:500;letter-spacing:0.12em;
-  transition:background 0.3s!important;
-  border-radius:2px;
+  background:var(--red)!important;
+  color:#fff!important;
+  opacity:1!important;
+  padding:10px 24px!important;
+  font-weight:500;letter-spacing:0.1em;
+  position:relative;overflow:hidden;
 }
-.nav-book:hover{background:var(--orange2)!important;}
-.nav-book::after{display:none!important;}
+.nav-book::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(255,255,255,0.15),transparent);
+  opacity:0;transition:opacity 0.3s;
+}
+.nav-book:hover{background:var(--red2)!important;}
+.nav-book:hover::after{opacity:1;}
 
 .hamburger{
   display:none;flex-direction:column;gap:5px;
@@ -108,7 +125,7 @@ nav{
 }
 .hamburger span{
   display:block;width:22px;height:1.5px;
-  background:var(--cream);transition:transform 0.3s,opacity 0.3s;
+  background:var(--ink);transition:transform 0.3s,opacity 0.3s;
 }
 .hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg);}
 .hamburger.open span:nth-child(2){opacity:0;}
@@ -116,638 +133,774 @@ nav{
 
 .mobile-menu{
   display:none;position:fixed;inset:0;
-  background:rgba(4,8,15,0.99);z-index:499;
+  background:rgba(255,255,255,0.99);z-index:499;
   flex-direction:column;align-items:center;justify-content:center;
-  gap:28px;opacity:0;transition:opacity 0.35s;
-  padding:48px 24px;overflow-y:auto;
+  gap:24px;opacity:0;transition:opacity 0.3s;
+  padding:40px 24px;overflow-y:auto;
 }
 .mobile-menu.open{opacity:1;}
 .mobile-menu a{
-  font-family:'Tenor Sans',serif;font-size:28px;
-  color:var(--cream);text-decoration:none;
-  opacity:0.7;transition:color 0.3s,opacity 0.3s;text-align:center;
+  font-family:'Cormorant Garamond',serif;
+  font-size:32px;font-weight:500;
+  color:var(--ink);text-decoration:none;
+  opacity:0.75;transition:color 0.3s,opacity 0.3s;text-align:center;
 }
-.mobile-menu a:hover{color:var(--orange);opacity:1;}
-.mob-book{
-  background:var(--orange);color:var(--white)!important;
-  font-family:'Jost',sans-serif!important;font-size:12px!important;
+.mobile-menu a:hover{color:var(--red);opacity:1;}
+.mob-cta{
+  background:var(--red)!important;color:#fff!important;
+  font-family:'Outfit',sans-serif!important;font-size:12px!important;
   letter-spacing:0.15em;text-transform:uppercase;
   padding:14px 40px!important;opacity:1!important;margin-top:8px;
+  font-weight:500!important;
 }
-.mob-contact-row{
-  display:flex;flex-direction:column;align-items:center;gap:10px;
-  margin-top:12px;padding-top:24px;
-  border-top:1px solid rgba(255,255,255,0.07);width:100%;
+.mob-contacts{
+  display:flex;flex-direction:column;align-items:center;gap:8px;
+  margin-top:12px;padding-top:20px;
+  border-top:1px solid var(--border);width:100%;
 }
-.mob-contact-row a{
-  font-family:'Jost',sans-serif!important;font-size:12px!important;
-  color:var(--muted)!important;letter-spacing:0.1em;opacity:1!important;
+.mob-contacts a{
+  font-family:'Outfit',sans-serif!important;font-size:13px!important;
+  color:var(--gray)!important;opacity:1!important;
 }
 
 /* ── HERO ── */
 .hero{
-  height:100vh;min-height:640px;
+  min-height:calc(100vh - 116px);
   display:grid;grid-template-columns:1fr 1fr;
   position:relative;overflow:hidden;
+  background:var(--white);
 }
+
+/* HEATMAP NOTE: left side is primary — where eyes land first on load */
 .hero-left{
   display:flex;flex-direction:column;justify-content:center;
-  padding:80px 60px 80px 60px;
+  padding:80px 64px 140px;
   position:relative;z-index:2;
-  background:linear-gradient(105deg,var(--navy) 0%,var(--navy2) 100%);
 }
-.hero-left::after{
-  content:'';position:absolute;right:-1px;top:0;bottom:0;width:60px;
-  background:linear-gradient(to right,var(--navy2),transparent);
-  z-index:3;
+
+/* animated red corner accent */
+.hero-left::before{
+  content:'';
+  position:absolute;top:0;left:0;
+  width:4px;height:100%;
+  background:linear-gradient(to bottom,var(--red),transparent 60%);
 }
-.hero-eyebrow{
-  display:inline-flex;align-items:center;gap:12px;
+
+.hero-pre{
+  display:inline-flex;align-items:center;gap:10px;
   font-size:10px;letter-spacing:0.3em;text-transform:uppercase;
-  color:var(--orange);margin-bottom:28px;
-  opacity:0;animation:fadeUp 1s 0.3s forwards;
+  color:var(--red);margin-bottom:24px;
+  opacity:0;animation:fadeUp 0.8s 0.2s forwards;
 }
-.hero-eyebrow::before{content:'';width:32px;height:1px;background:var(--orange);flex-shrink:0;}
+.hero-pre::before{
+  content:'';width:28px;height:1px;background:var(--red);flex-shrink:0;
+}
+
 .hero h1{
-  font-family:'Tenor Sans',serif;
-  font-size:clamp(40px,4.5vw,68px);
-  font-weight:400;line-height:1.05;
-  letter-spacing:0.01em;margin-bottom:24px;
-  opacity:0;animation:fadeUp 1s 0.5s forwards;
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(48px,5.5vw,82px);
+  font-weight:500;line-height:1.0;
+  letter-spacing:-0.01em;margin-bottom:24px;
+  opacity:0;animation:fadeUp 0.8s 0.4s forwards;
+  color:var(--ink);
 }
-.hero h1 span{color:var(--orange);}
+.hero h1 .red{color:var(--red);}
+.hero h1 .line{display:block;}
+
 .hero-sub{
   font-size:15px;line-height:1.85;
-  color:var(--muted);max-width:420px;
-  margin-bottom:44px;letter-spacing:0.03em;
-  opacity:0;animation:fadeUp 1s 0.7s forwards;
+  color:var(--gray);max-width:420px;
+  margin-bottom:44px;letter-spacing:0.02em;
+  opacity:0;animation:fadeUp 0.8s 0.6s forwards;
 }
+
+/* HEATMAP: Primary CTA is biggest, leftmost — F-pattern reading */
 .hero-actions{
-  display:flex;gap:16px;flex-wrap:wrap;
-  opacity:0;animation:fadeUp 1s 0.9s forwards;
+  display:flex;gap:12px;align-items:center;flex-wrap:wrap;
+  opacity:0;animation:fadeUp 0.8s 0.8s forwards;
 }
+
+/* trust row — HEATMAP: just below CTA, high dwell area */
 .hero-trust{
-  margin-top:52px;padding-top:28px;
-  border-top:1px solid rgba(255,255,255,0.07);
-  display:flex;gap:32px;align-items:center;flex-wrap:wrap;
-  opacity:0;animation:fadeUp 1s 1.1s forwards;
+  margin-top:48px;padding-top:28px;
+  border-top:1px solid var(--border);
+  display:flex;gap:0;
+  opacity:0;animation:fadeUp 0.8s 1s forwards;
 }
 .trust-item{
-  display:flex;flex-direction:column;
-  font-size:11px;letter-spacing:0.08em;color:var(--mutedmore);
+  flex:1;padding-right:24px;border-right:1px solid var(--border);
+  margin-right:24px;
 }
+.trust-item:last-child{border-right:none;margin-right:0;padding-right:0;}
 .trust-num{
-  font-family:'Tenor Sans',serif;
-  font-size:28px;color:var(--orange);line-height:1;margin-bottom:4px;
+  font-family:'Cormorant Garamond',serif;
+  font-size:34px;font-weight:600;color:var(--red);line-height:1;
+  margin-bottom:4px;
 }
-.trust-divider{width:1px;height:40px;background:rgba(255,255,255,0.08);align-self:center;}
+.trust-label{font-size:11px;letter-spacing:0.06em;color:var(--gray);}
 
+/* HERO RIGHT — image panel */
 .hero-right{
-  position:relative;overflow:hidden;
-}
-.hero-right::before{
-  content:'';position:absolute;inset:0;z-index:1;
-  background:linear-gradient(to right,var(--navy2) 0%,transparent 30%),
-    linear-gradient(to top,rgba(4,8,15,0.6) 0%,transparent 50%);
+  position:relative;overflow:hidden;background:var(--light);
 }
 .hero-img-grid{
   position:absolute;inset:0;
-  display:grid;grid-template-columns:1fr 1fr;
-  grid-template-rows:1fr 1fr;gap:2px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  grid-template-rows:1fr 1fr;
+  gap:3px;
 }
 .hero-img-grid img{
   width:100%;height:100%;object-fit:cover;
-  transition:transform 8s ease;
+  transition:transform 10s ease;
 }
-.hero-img-grid img:hover{transform:scale(1.04);}
-.hero-img-main{grid-row:span 2;}
+.hero-img-grid img:hover{transform:scale(1.06);}
+.hig-main{grid-row:span 2;}
 
-/* search bar */
-.search-bar{
-  position:absolute;bottom:0;left:0;right:0;z-index:10;
-  background:rgba(7,20,40,0.95);
-  backdrop-filter:blur(20px);
-  border-top:1px solid rgba(232,114,42,0.2);
-  padding:24px 60px;
-  display:flex;gap:0;align-items:stretch;
+/* futuristic overlay on images */
+.hero-right::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(212,43,43,0.08) 0%,transparent 50%);
+  pointer-events:none;
+  z-index:1;
 }
-.search-tab{
-  display:flex;gap:0;margin-bottom:12px;
-  border-bottom:1px solid rgba(255,255,255,0.08);
-  padding-bottom:0;
+
+/* floating data card — futuristic HUD */
+.hud-card{
+  position:absolute;
+  background:rgba(255,255,255,0.96);
+  border:1px solid var(--border);
+  backdrop-filter:blur(20px);
+  padding:16px 20px;
+  z-index:5;
+  animation:hudFloat 4s ease-in-out infinite alternate;
+}
+@keyframes hudFloat{
+  from{transform:translateY(0);}
+  to{transform:translateY(-8px);}
+}
+.hud1{bottom:40px;left:24px;}
+.hud2{top:32px;right:24px;animation-delay:2s;}
+.hud-label{font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gray);margin-bottom:6px;}
+.hud-value{
+  font-family:'Cormorant Garamond',serif;
+  font-size:22px;font-weight:600;color:var(--red);
+  line-height:1;
+}
+.hud-sub{font-size:10px;color:var(--gray);margin-top:4px;letter-spacing:0.05em;}
+.hud-dot{
+  display:inline-block;width:6px;height:6px;
+  border-radius:50%;background:var(--red);
+  margin-right:5px;
+  animation:pulse 2s infinite;
+}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:0.5;transform:scale(0.8);}}
+
+/* HERO BOTTOM — HEATMAP: search bar is prime booking trigger */
+.hero-search{
+  position:absolute;bottom:0;left:0;right:0;
+  background:var(--white);
+  border-top:2px solid var(--red);
+  padding:0;
+  z-index:10;
+  box-shadow:0 -4px 32px rgba(0,0,0,0.06);
+}
+.search-tabs{
+  display:flex;border-bottom:1px solid var(--border);
+  padding:0 64px;background:var(--off);
 }
 .stab{
-  font-size:11px;letter-spacing:0.1em;text-transform:uppercase;
-  color:var(--mutedmore);padding:8px 18px;cursor:pointer;
-  border-bottom:2px solid transparent;transition:color 0.3s,border-color 0.3s;
-  white-space:nowrap;
+  padding:12px 20px;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;
+  color:var(--gray);cursor:pointer;border-bottom:2px solid transparent;
+  transition:color 0.2s,border-color 0.2s;margin-bottom:-1px;white-space:nowrap;
 }
-.stab.active,.stab:hover{color:var(--orange);border-bottom-color:var(--orange);}
-.search-inner{display:flex;gap:0;flex:1;align-items:stretch;}
-.search-field{
-  flex:1;padding:0 20px;
-  background:rgba(255,255,255,0.04);
-  border:1px solid rgba(255,255,255,0.08);
-  border-right:none;
-  color:var(--cream);font-family:'Jost',sans-serif;font-size:13px;
-  min-width:0;height:52px;outline:none;
-  transition:border-color 0.3s;
+.stab.active,.stab:hover{color:var(--red);border-bottom-color:var(--red);}
+.search-row{
+  display:flex;padding:20px 64px;gap:0;align-items:stretch;
 }
-.search-field:focus{border-color:rgba(232,114,42,0.4);}
-.search-field::placeholder{color:var(--mutedmore);font-size:12px;}
-.search-btn{
-  background:var(--orange);color:var(--white);
-  border:none;padding:0 32px;
-  font-family:'Jost',sans-serif;font-size:12px;
-  letter-spacing:0.15em;text-transform:uppercase;
-  cursor:pointer;white-space:nowrap;
-  transition:background 0.3s;font-weight:500;
-  height:52px;
+.sf{
+  flex:1;min-width:0;
+  border:1px solid var(--border);border-right:none;
+  padding:0 18px;height:52px;
+  font-family:'Outfit',sans-serif;font-size:13px;
+  color:var(--ink);background:var(--white);outline:none;
+  transition:border-color 0.2s;
 }
-.search-btn:hover{background:var(--orange2);}
+.sf:focus{border-color:var(--red);z-index:1;position:relative;}
+.sf::placeholder{color:var(--lgray);font-size:12px;}
+.search-cta{
+  background:var(--red);color:#fff;
+  border:none;padding:0 36px;
+  font-family:'Outfit',sans-serif;font-size:12px;font-weight:500;
+  letter-spacing:0.15em;text-transform:uppercase;cursor:pointer;
+  transition:background 0.2s;white-space:nowrap;
+  display:flex;align-items:center;gap:10px;
+}
+.search-cta:hover{background:var(--red2);}
+.search-cta svg{width:14px;height:14px;}
 
 /* BUTTONS */
 .btn-primary{
-  background:var(--orange);color:var(--white);
-  padding:14px 32px;
-  font-family:'Jost',sans-serif;font-size:11px;
-  font-weight:500;letter-spacing:0.18em;text-transform:uppercase;
+  background:var(--red);color:#fff;
+  padding:15px 36px;
+  font-family:'Outfit',sans-serif;font-size:12px;font-weight:500;
+  letter-spacing:0.15em;text-transform:uppercase;
   text-decoration:none;border:none;cursor:pointer;
-  transition:background 0.3s,transform 0.2s;
-  display:inline-block;white-space:nowrap;
+  position:relative;overflow:hidden;display:inline-block;
+  white-space:nowrap;transition:background 0.2s,transform 0.2s;
 }
-.btn-primary:hover{background:var(--orange2);transform:translateY(-1px);}
+.btn-primary::before{
+  content:'';position:absolute;top:0;left:-100%;
+  width:60%;height:100%;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,0.2),transparent);
+  transition:left 0.5s;
+}
+.btn-primary:hover{background:var(--red2);transform:translateY(-1px);}
+.btn-primary:hover::before{left:150%;}
+
 .btn-outline{
-  background:transparent;color:var(--cream);
-  padding:13px 32px;
-  font-family:'Jost',sans-serif;font-size:11px;
-  letter-spacing:0.18em;text-transform:uppercase;
+  background:transparent;color:var(--ink);
+  padding:14px 32px;
+  font-family:'Outfit',sans-serif;font-size:12px;
+  letter-spacing:0.15em;text-transform:uppercase;
   text-decoration:none;
-  border:1px solid rgba(244,240,232,0.25);
+  border:1.5px solid var(--ink);
   display:inline-flex;align-items:center;gap:8px;
-  transition:border-color 0.3s,color 0.3s;white-space:nowrap;
+  transition:border-color 0.2s,color 0.2s,background 0.2s;white-space:nowrap;
 }
-.btn-outline:hover{border-color:var(--orange);color:var(--orange);}
+.btn-outline:hover{border-color:var(--red);color:var(--red);}
 
-/* ── SERVICES STRIP ── */
-.services-strip{
-  background:var(--navy2);
+/* ── SERVICES STRIP — HEATMAP: high scroll-stop area ── */
+.svc-strip{
+  background:var(--ink);
   padding:0 60px;
-  border-bottom:1px solid rgba(255,255,255,0.05);
+  overflow-x:auto;scrollbar-width:none;
 }
-.services-row{
-  display:flex;overflow-x:auto;scrollbar-width:none;
-  gap:0;
-}
-.services-row::-webkit-scrollbar{display:none;}
+.svc-strip::-webkit-scrollbar{display:none;}
+.svc-row{display:flex;gap:0;}
 .svc-item{
-  display:flex;flex-direction:column;align-items:center;
-  gap:10px;padding:28px 32px;
-  border-right:1px solid rgba(255,255,255,0.05);
-  text-decoration:none;color:var(--muted);
-  transition:background 0.3s,color 0.3s;
-  white-space:nowrap;flex-shrink:0;
-  font-size:11px;letter-spacing:0.12em;text-transform:uppercase;
-  min-width:110px;
+  display:flex;align-items:center;gap:10px;
+  padding:20px 28px;
+  border-right:1px solid rgba(255,255,255,0.07);
+  text-decoration:none;color:rgba(255,255,255,0.55);
+  font-size:11px;letter-spacing:0.1em;text-transform:uppercase;
+  transition:color 0.2s,background 0.2s;white-space:nowrap;flex-shrink:0;
 }
-.svc-item:hover{background:rgba(232,114,42,0.08);color:var(--orange);}
-.svc-icon{
-  width:36px;height:36px;object-fit:contain;
-  opacity:0.6;transition:opacity 0.3s;
-  filter:brightness(2) saturate(0);
+.svc-item:hover{color:#fff;background:var(--red);}
+.svc-dot{
+  width:5px;height:5px;border-radius:50%;
+  background:var(--red);opacity:0.5;flex-shrink:0;
+  transition:opacity 0.2s;
 }
-.svc-item:hover .svc-icon{opacity:1;filter:none;}
+.svc-item:hover .svc-dot{opacity:1;}
 
-/* ── DESTINATIONS ── */
-.destinations{padding:110px 60px;}
-.section-label{
+/* ── DESTINATIONS — HEATMAP: F-pattern row, left card has most dwell ── */
+.destinations{padding:100px 60px;background:var(--white);}
+
+.section-eyebrow{
   display:flex;align-items:center;gap:12px;
   font-size:10px;letter-spacing:0.28em;text-transform:uppercase;
-  color:var(--orange);margin-bottom:20px;
+  color:var(--red);margin-bottom:16px;
 }
-.section-label::before{content:'';width:28px;height:1px;background:var(--orange);}
-h2.section-title{
-  font-family:'Tenor Sans',serif;
-  font-size:clamp(32px,3.5vw,52px);
-  font-weight:400;line-height:1.1;margin-bottom:16px;
-}
-.section-title span{
+.section-eyebrow::before{content:'';width:24px;height:1px;background:var(--red);}
+
+.section-title{
   font-family:'Cormorant Garamond',serif;
-  font-style:italic;color:var(--orange);
+  font-size:clamp(32px,3.5vw,52px);
+  font-weight:500;line-height:1.05;
+  color:var(--ink);margin-bottom:14px;
 }
+.section-title em{font-style:italic;color:var(--red);}
 .section-sub{
-  font-size:14px;line-height:1.8;color:var(--muted);
-  max-width:520px;margin-bottom:60px;letter-spacing:0.03em;
+  font-size:14px;color:var(--gray);line-height:1.8;
+  max-width:480px;margin-bottom:52px;
 }
+
+/* HEATMAP GRID: big card left (primary), two stacked right (secondary) */
 .dest-grid{
   display:grid;
-  grid-template-columns:2fr 1fr 1fr;
-  grid-template-rows:280px 280px;
-  gap:8px;
+  grid-template-columns:1.4fr 1fr 1fr;
+  grid-template-rows:300px 300px;
+  gap:4px;
 }
 .dest-card{
-  position:relative;overflow:hidden;
-  cursor:pointer;
+  position:relative;overflow:hidden;cursor:pointer;
+  background:var(--light);
 }
 .dest-card img{
   width:100%;height:100%;object-fit:cover;
-  transition:transform 0.7s ease;
+  transition:transform 0.8s ease;filter:saturate(0.9);
 }
-.dest-card:hover img{transform:scale(1.07);}
+.dest-card:hover img{transform:scale(1.08);filter:saturate(1.1);}
+
+/* futuristic overlay */
+.dest-card::before{
+  content:'';position:absolute;inset:0;z-index:1;
+  background:linear-gradient(to top,rgba(13,13,13,0.8) 0%,rgba(13,13,13,0.1) 55%,transparent 100%);
+}
 .dest-card::after{
-  content:'';position:absolute;inset:0;
-  background:linear-gradient(to top,rgba(4,8,15,0.85) 0%,rgba(4,8,15,0.1) 60%);
-  transition:background 0.4s;
+  content:'';position:absolute;
+  top:0;left:0;right:0;height:2px;
+  background:var(--red);
+  transform:scaleX(0);transform-origin:left;
+  transition:transform 0.5s;z-index:3;
 }
-.dest-card:hover::after{
-  background:linear-gradient(to top,rgba(4,8,15,0.9) 0%,rgba(4,8,15,0.25) 60%);
-}
+.dest-card:hover::after{transform:scaleX(1);}
+
 .dest-info{
   position:absolute;bottom:0;left:0;right:0;
-  padding:24px 28px;z-index:2;
+  padding:28px 28px;z-index:2;
+  transform:translateY(8px);transition:transform 0.4s;
 }
+.dest-card:hover .dest-info{transform:translateY(0);}
 .dest-region{
-  font-size:10px;letter-spacing:0.2em;text-transform:uppercase;
-  color:var(--orange);margin-bottom:6px;opacity:0.85;
+  font-size:9px;letter-spacing:0.25em;text-transform:uppercase;
+  color:rgba(255,255,255,0.6);margin-bottom:6px;
 }
 .dest-name{
-  font-family:'Tenor Sans',serif;
-  font-size:22px;font-weight:400;margin-bottom:6px;
+  font-family:'Cormorant Garamond',serif;
+  font-size:26px;font-weight:500;color:#fff;margin-bottom:8px;
 }
-.dest-card-main .dest-name{font-size:34px;}
-.dest-desc{
-  font-size:12px;color:var(--muted);letter-spacing:0.03em;
-  opacity:0;transform:translateY(8px);
-  transition:opacity 0.4s,transform 0.4s;
+.dest-main .dest-name{font-size:38px;}
+.dest-tagline{
+  font-size:12px;color:rgba(255,255,255,0.65);
+  letter-spacing:0.03em;margin-bottom:14px;
+  max-height:0;overflow:hidden;
+  transition:max-height 0.4s;
 }
-.dest-card:hover .dest-desc{opacity:1;transform:translateY(0);}
-.dest-tag{
-  display:inline-block;margin-top:10px;
-  background:var(--orange);color:var(--white);
-  padding:5px 14px;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;
-  opacity:0;transition:opacity 0.4s 0.1s;
+.dest-card:hover .dest-tagline{max-height:40px;}
+.dest-link{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--red);color:#fff;
+  font-size:10px;letter-spacing:0.15em;text-transform:uppercase;
+  padding:8px 16px;text-decoration:none;
+  opacity:0;transform:translateY(6px);
+  transition:opacity 0.3s,transform 0.3s;
 }
-.dest-card:hover .dest-tag{opacity:1;}
-.dest-card-main{grid-row:span 2;}
+.dest-card:hover .dest-link{opacity:1;transform:translateY(0);}
+.dest-main{grid-row:span 2;}
 
-/* ── SERVICES FULL ── */
-.services-full{
-  padding:110px 60px;
-  background:var(--navy);
-  border-top:1px solid rgba(255,255,255,0.04);
+/* ── SERVICES CARDS ── */
+.services{
+  padding:100px 60px;background:var(--off);
+  border-top:1px solid var(--border);
 }
-.services-header{
-  display:grid;grid-template-columns:1fr 1fr;
-  gap:60px;align-items:end;margin-bottom:64px;
-}
-.services-grid{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:1px;background:rgba(255,255,255,0.04);
+.svc-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:4px;margin-top:52px;
 }
 .svc-card{
-  background:var(--navy);
+  background:var(--white);
   padding:40px 32px;
+  border:1px solid var(--border);
   position:relative;overflow:hidden;
-  transition:background 0.4s;
-  text-decoration:none;color:var(--cream);
-  display:block;
+  transition:border-color 0.3s,transform 0.3s,box-shadow 0.3s;
+  text-decoration:none;color:var(--ink);
+  display:block;cursor:pointer;
 }
 .svc-card::before{
-  content:'';position:absolute;top:0;left:0;right:0;
-  height:2px;background:linear-gradient(90deg,var(--orange),var(--orange2));
-  transform:scaleX(0);transform-origin:left;transition:transform 0.5s;
+  content:'';position:absolute;
+  left:0;top:0;bottom:0;width:3px;
+  background:var(--red);transform:scaleY(0);transform-origin:bottom;
+  transition:transform 0.4s;
 }
-.svc-card:hover{background:#0d1e38;}
-.svc-card:hover::before{transform:scaleX(1);}
-.svc-card-icon{
-  width:48px;height:48px;object-fit:contain;
-  margin-bottom:20px;
-  filter:brightness(10) saturate(0);opacity:0.4;
-  transition:filter 0.4s,opacity 0.4s;
+.svc-card:hover{
+  border-color:rgba(212,43,43,0.2);
+  transform:translateY(-4px);
+  box-shadow:0 12px 40px rgba(212,43,43,0.08);
 }
-.svc-card:hover .svc-card-icon{filter:none;opacity:1;}
-.svc-card-num{
+.svc-card:hover::before{transform:scaleY(1);}
+.svc-n{
   font-family:'Cormorant Garamond',serif;
-  font-size:52px;font-weight:300;
-  color:rgba(232,114,42,0.07);
-  line-height:1;margin-bottom:12px;
+  font-size:56px;font-weight:300;
+  color:rgba(212,43,43,0.07);line-height:1;margin-bottom:16px;
 }
-.svc-card-title{
-  font-family:'Tenor Sans',serif;
-  font-size:18px;font-weight:400;margin-bottom:10px;
+.svc-icon-wrap{
+  width:44px;height:44px;border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+  margin-bottom:18px;transition:border-color 0.3s,background 0.3s;
 }
-.svc-card-desc{font-size:13px;line-height:1.8;color:var(--muted);}
-.svc-card-arrow{
-  margin-top:20px;font-size:18px;color:var(--orange);
-  opacity:0;transform:translateX(-6px);
+.svc-card:hover .svc-icon-wrap{border-color:var(--red);background:rgba(212,43,43,0.05);}
+.svc-icon-wrap img{width:22px;height:22px;object-fit:contain;filter:saturate(0);opacity:0.5;}
+.svc-card:hover .svc-icon-wrap img{filter:none;opacity:1;}
+.svc-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:20px;font-weight:500;margin-bottom:10px;
+}
+.svc-desc{font-size:13px;line-height:1.8;color:var(--gray);}
+.svc-arr{
+  margin-top:18px;color:var(--red);font-size:16px;
+  opacity:0;transform:translateX(-4px);
   transition:opacity 0.3s,transform 0.3s;
-  display:block;
 }
-.svc-card:hover .svc-card-arrow{opacity:1;transform:translateX(0);}
+.svc-card:hover .svc-arr{opacity:1;transform:translateX(0);}
 
-/* ── WHY US ── */
+/* ── WHY US — HEATMAP: credibility block, high conversion ── */
 .whyus{
-  padding:110px 60px;
+  padding:100px 60px;background:var(--white);
   display:grid;grid-template-columns:1fr 1fr;
   gap:80px;align-items:center;
 }
 .whyus-visual{
   position:relative;
-  display:grid;grid-template-columns:1fr 1fr;
-  gap:8px;height:500px;
+  display:grid;grid-template-columns:1fr 1fr;gap:4px;
+  height:520px;
 }
-.wu-img{border-radius:2px;overflow:hidden;border:1px solid rgba(232,114,42,0.1);}
-.wu-img img{width:100%;height:100%;object-fit:cover;}
-.wu-img-tall{grid-row:span 2;}
-.wu-badge{
-  position:absolute;bottom:24px;right:-20px;
-  background:var(--orange);color:var(--white);
-  padding:20px 24px;z-index:2;
-  text-align:center;
-}
-.wu-badge-num{
-  font-family:'Tenor Sans',serif;
-  font-size:36px;line-height:1;margin-bottom:4px;
-}
-.wu-badge-label{font-size:10px;letter-spacing:0.12em;text-transform:uppercase;opacity:0.85;}
-.whyus-text .section-label{margin-bottom:20px;}
-.whyus-text h2{margin-bottom:20px;}
-.whyus-text p{font-size:14px;line-height:1.85;color:var(--muted);margin-bottom:16px;letter-spacing:0.03em;}
+.wv-img{overflow:hidden;position:relative;}
+.wv-img img{width:100%;height:100%;object-fit:cover;transition:transform 0.7s;}
+.wv-img:hover img{transform:scale(1.05);}
+.wv-tall{grid-row:span 2;}
 
-.values-grid{
-  margin-top:36px;
-  display:grid;grid-template-columns:1fr 1fr;gap:16px;
+/* animated corner lines — futuristic */
+.wv-corner{
+  position:absolute;z-index:2;pointer-events:none;
 }
-.val-item{
-  padding:20px;
-  border:1px solid rgba(255,255,255,0.05);
-  background:rgba(255,255,255,0.02);
+.wv-corner.tl{top:8px;left:8px;border-top:2px solid var(--red);border-left:2px solid var(--red);width:20px;height:20px;}
+.wv-corner.br{bottom:8px;right:8px;border-bottom:2px solid var(--red);border-right:2px solid var(--red);width:20px;height:20px;}
+
+.wv-badge{
+  position:absolute;bottom:-16px;right:-16px;
+  background:var(--red);color:#fff;
+  padding:20px 24px;z-index:3;text-align:center;
+}
+.wvb-num{
+  font-family:'Cormorant Garamond',serif;
+  font-size:38px;font-weight:600;line-height:1;
+}
+.wvb-label{font-size:10px;letter-spacing:0.12em;text-transform:uppercase;opacity:0.85;margin-top:4px;}
+
+.whyus-text h2{margin-bottom:20px;}
+.whyus-text p{font-size:14px;line-height:1.9;color:var(--gray);margin-bottom:16px;}
+.whyus-text .section-eyebrow{margin-bottom:20px;}
+
+.vals{
+  display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:32px;
+}
+.val{
+  padding:18px 20px;border:1px solid var(--border);
+  background:var(--off);
   transition:border-color 0.3s,background 0.3s;
 }
-.val-item:hover{border-color:rgba(232,114,42,0.3);background:rgba(232,114,42,0.04);}
-.val-icon{font-size:20px;margin-bottom:10px;}
-.val-title{
-  font-size:13px;font-weight:500;letter-spacing:0.06em;
-  margin-bottom:6px;
-}
-.val-desc{font-size:12px;color:var(--muted);line-height:1.7;}
+.val:hover{border-color:var(--red);background:rgba(212,43,43,0.03);}
+.val-icon{font-size:18px;margin-bottom:8px;}
+.val-t{font-size:13px;font-weight:500;margin-bottom:5px;color:var(--ink);}
+.val-d{font-size:12px;color:var(--gray);line-height:1.65;}
 
 /* ── TRENDING ── */
 .trending{
-  padding:110px 60px;
-  background:var(--navy2);
-  border-top:1px solid rgba(255,255,255,0.04);
+  padding:100px 60px;background:var(--off);
+  border-top:1px solid var(--border);
 }
-.trending-grid{
-  display:grid;grid-template-columns:repeat(3,1fr);gap:16px;
-  margin-top:56px;
+.trend-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:4px;margin-top:52px;
 }
 .trend-card{
-  background:var(--navy);
-  border:1px solid rgba(255,255,255,0.05);
+  background:var(--white);border:1px solid var(--border);
   overflow:hidden;
-  transition:border-color 0.4s,transform 0.4s;
-  text-decoration:none;color:var(--cream);
-  display:block;
+  transition:border-color 0.3s,transform 0.3s,box-shadow 0.3s;
+  text-decoration:none;color:var(--ink);display:block;
 }
-.trend-card:hover{border-color:rgba(232,114,42,0.3);transform:translateY(-4px);}
-.trend-img{height:200px;overflow:hidden;}
+.trend-card:hover{
+  border-color:rgba(212,43,43,0.25);
+  transform:translateY(-4px);
+  box-shadow:0 16px 48px rgba(0,0,0,0.08);
+}
+.trend-img{height:200px;overflow:hidden;position:relative;}
 .trend-img img{width:100%;height:100%;object-fit:cover;transition:transform 0.6s;}
-.trend-card:hover .trend-img img{transform:scale(1.06);}
-.trend-body{padding:28px 28px 24px;}
+.trend-card:hover .trend-img img{transform:scale(1.07);}
+.trend-img::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:3px;
+  background:var(--red);transform:scaleX(0);transform-origin:left;transition:transform 0.4s;
+}
+.trend-card:hover .trend-img::after{transform:scaleX(1);}
+.trend-body{padding:28px;}
 .trend-tag{
-  font-size:10px;letter-spacing:0.15em;text-transform:uppercase;
-  color:var(--orange);margin-bottom:10px;
+  font-size:9px;letter-spacing:0.2em;text-transform:uppercase;
+  color:var(--red);margin-bottom:10px;
 }
 .trend-title{
-  font-family:'Tenor Sans',serif;
-  font-size:18px;margin-bottom:10px;
+  font-family:'Cormorant Garamond',serif;
+  font-size:20px;font-weight:500;margin-bottom:10px;color:var(--ink);
 }
-.trend-desc{font-size:13px;color:var(--muted);line-height:1.75;margin-bottom:16px;}
-.trend-footer{
+.trend-desc{font-size:13px;color:var(--gray);line-height:1.75;margin-bottom:16px;}
+.trend-foot{
   display:flex;justify-content:space-between;align-items:center;
-  padding-top:16px;border-top:1px solid rgba(255,255,255,0.05);
+  padding-top:14px;border-top:1px solid var(--border);
 }
-.trend-price{font-size:12px;color:var(--muted);}
 .trend-price strong{
-  font-family:'Tenor Sans',serif;font-size:20px;
-  color:var(--orange);display:block;
+  font-family:'Cormorant Garamond',serif;
+  font-size:22px;font-weight:600;color:var(--red);display:block;
 }
-.trend-btn{
-  font-size:11px;letter-spacing:0.12em;text-transform:uppercase;
-  color:var(--orange);opacity:0.8;transition:opacity 0.3s;
+.trend-price span{font-size:11px;color:var(--gray);}
+.trend-cta{
+  font-size:11px;letter-spacing:0.1em;text-transform:uppercase;
+  color:var(--red);font-weight:500;
+  display:flex;align-items:center;gap:5px;
+  transition:gap 0.2s;
 }
-.trend-card:hover .trend-btn{opacity:1;}
+.trend-card:hover .trend-cta{gap:10px;}
 
 /* ── OFFICES ── */
 .offices{
-  padding:90px 60px;
-  background:var(--navy);
-  border-top:1px solid rgba(255,255,255,0.04);
+  padding:80px 60px;background:var(--white);
+  border-top:1px solid var(--border);
 }
 .offices-grid{
-  display:grid;grid-template-columns:1fr 1fr;
-  gap:16px;margin-top:48px;
+  display:grid;grid-template-columns:1fr 1fr;gap:4px;margin-top:48px;
 }
-.office-card{
-  padding:40px 40px;
-  border:1px solid rgba(255,255,255,0.06);
-  background:rgba(255,255,255,0.01);
+.office{
+  padding:40px;border:1px solid var(--border);
+  position:relative;overflow:hidden;
   transition:border-color 0.3s;
 }
-.office-card:hover{border-color:rgba(232,114,42,0.25);}
+.office::after{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  background:var(--red);transform:scaleX(0);transform-origin:left;transition:transform 0.5s;
+}
+.office:hover{border-color:rgba(212,43,43,0.2);}
+.office:hover::after{transform:scaleX(1);}
 .office-tag{
-  font-size:10px;letter-spacing:0.2em;text-transform:uppercase;
-  color:var(--orange);margin-bottom:16px;
+  font-size:9px;letter-spacing:0.22em;text-transform:uppercase;
+  color:var(--red);margin-bottom:14px;
   display:flex;align-items:center;gap:8px;
 }
-.office-tag::before{content:'';width:20px;height:1px;background:var(--orange);}
+.office-tag::before{content:'';width:18px;height:1px;background:var(--red);}
 .office-name{
-  font-family:'Tenor Sans',serif;font-size:22px;margin-bottom:16px;
+  font-family:'Cormorant Garamond',serif;
+  font-size:24px;font-weight:500;margin-bottom:16px;color:var(--ink);
 }
 .office-detail{
-  font-size:13px;color:var(--muted);line-height:1.8;
-  margin-bottom:8px;letter-spacing:0.02em;
+  font-size:13px;color:var(--gray);line-height:1.8;margin-bottom:8px;
 }
-.office-detail a{color:var(--cream);text-decoration:none;transition:color 0.3s;}
-.office-detail a:hover{color:var(--orange);}
+.office-detail a{color:var(--ink);text-decoration:none;transition:color 0.2s;}
+.office-detail a:hover{color:var(--red);}
 
-/* ── CONTACT CTA ── */
+/* ── CTA SECTION — HEATMAP: high intent, bottom of page ── */
 .cta-section{
-  padding:120px 60px;
-  text-align:center;
+  background:var(--red);
+  padding:100px 60px;text-align:center;
   position:relative;overflow:hidden;
-  background:linear-gradient(135deg,var(--navy) 0%,var(--navy3) 100%);
-  border-top:1px solid rgba(232,114,42,0.12);
 }
+
+/* futuristic grid on red */
 .cta-section::before{
   content:'';position:absolute;inset:0;
-  background:radial-gradient(ellipse 80% 70% at 50% 50%,rgba(232,114,42,0.06) 0%,transparent 70%);
+  background-image:
+    linear-gradient(rgba(255,255,255,0.04) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,0.04) 1px,transparent 1px);
+  background-size:60px 60px;
+  pointer-events:none;
 }
+/* animated diagonal lines */
+.cta-section::after{
+  content:'';position:absolute;inset:0;
+  background:repeating-linear-gradient(
+    -45deg,
+    transparent,
+    transparent 60px,
+    rgba(255,255,255,0.02) 60px,
+    rgba(255,255,255,0.02) 61px
+  );
+  pointer-events:none;
+}
+
 .cta-section h2{
-  font-family:'Tenor Sans',serif;
-  font-size:clamp(36px,5vw,68px);font-weight:400;
-  line-height:1.05;margin-bottom:20px;position:relative;
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(36px,5vw,72px);font-weight:500;
+  line-height:1.0;color:#fff;margin-bottom:20px;
+  position:relative;z-index:1;
 }
-.cta-section h2 span{color:var(--orange);}
 .cta-section p{
-  font-size:15px;color:var(--muted);
-  margin-bottom:48px;position:relative;
-  letter-spacing:0.04em;max-width:500px;margin-left:auto;margin-right:auto;
+  font-size:15px;color:rgba(255,255,255,0.75);
+  margin-bottom:48px;position:relative;z-index:1;
+  letter-spacing:0.03em;max-width:480px;margin-left:auto;margin-right:auto;
   line-height:1.8;
 }
-.cta-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;position:relative;}
+.cta-btns{
+  display:flex;gap:14px;justify-content:center;flex-wrap:wrap;
+  position:relative;z-index:1;margin-bottom:52px;
+}
+.btn-white{
+  background:#fff;color:var(--red);
+  padding:15px 36px;
+  font-family:'Outfit',sans-serif;font-size:12px;font-weight:600;
+  letter-spacing:0.15em;text-transform:uppercase;
+  text-decoration:none;border:none;cursor:pointer;
+  transition:background 0.2s,transform 0.2s;
+  display:inline-block;white-space:nowrap;
+}
+.btn-white:hover{background:var(--off);transform:translateY(-2px);}
+.btn-red-outline{
+  background:transparent;color:#fff;
+  padding:14px 32px;
+  font-family:'Outfit',sans-serif;font-size:12px;
+  letter-spacing:0.15em;text-transform:uppercase;
+  text-decoration:none;
+  border:1.5px solid rgba(255,255,255,0.5);
+  display:inline-flex;align-items:center;gap:8px;
+  transition:border-color 0.2s,background 0.2s;white-space:nowrap;
+  position:relative;z-index:1;
+}
+.btn-red-outline:hover{border-color:#fff;background:rgba(255,255,255,0.08);}
+
 .cta-contacts{
-  margin-top:52px;display:flex;gap:40px;
-  justify-content:center;flex-wrap:wrap;position:relative;
+  display:flex;gap:36px;justify-content:center;flex-wrap:wrap;
+  position:relative;z-index:1;
 }
 .cta-contact{
-  display:flex;align-items:center;gap:12px;
-  font-size:13px;color:var(--muted);text-decoration:none;
-  transition:color 0.3s;
+  display:flex;align-items:center;gap:10px;
+  font-size:13px;color:rgba(255,255,255,0.8);
+  text-decoration:none;transition:color 0.2s;letter-spacing:0.02em;
 }
-.cta-contact:hover{color:var(--orange);}
+.cta-contact:hover{color:#fff;}
 .cta-contact-icon{
-  width:36px;height:36px;border:1px solid rgba(255,255,255,0.1);
+  width:34px;height:34px;border:1px solid rgba(255,255,255,0.3);
   border-radius:50%;display:flex;align-items:center;justify-content:center;
-  font-size:14px;flex-shrink:0;
-  transition:border-color 0.3s,background 0.3s;
+  font-size:13px;flex-shrink:0;
+  transition:border-color 0.2s,background 0.2s;
 }
-.cta-contact:hover .cta-contact-icon{border-color:var(--orange);background:rgba(232,114,42,0.1);}
+.cta-contact:hover .cta-contact-icon{border-color:#fff;background:rgba(255,255,255,0.1);}
 
 /* ── FOOTER ── */
 footer{
-  background:var(--ink);
-  border-top:1px solid rgba(255,255,255,0.05);
-  padding:60px 60px 40px;
+  background:var(--ink2);color:rgba(255,255,255,0.6);
+  padding:60px 60px 36px;
 }
 .footer-top{
-  display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;
+  display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;
   gap:48px;margin-bottom:48px;
 }
-.footer-brand img{height:38px;margin-bottom:20px;filter:brightness(1.2);}
-.footer-brand p{font-size:13px;color:var(--muted);line-height:1.8;max-width:260px;}
-.footer-accreds{display:flex;gap:12px;align-items:center;margin-top:20px;flex-wrap:wrap;}
-.footer-accreds img{height:28px;object-fit:contain;opacity:0.6;filter:saturate(0) brightness(2);}
+.footer-logo-img{height:36px;object-fit:contain;filter:brightness(10);opacity:0.9;margin-bottom:18px;}
+.footer-brand p{font-size:13px;color:rgba(255,255,255,0.45);line-height:1.8;max-width:240px;}
+.footer-accreds{
+  display:flex;gap:12px;align-items:center;
+  margin-top:20px;flex-wrap:wrap;
+}
+.footer-accreds img{height:26px;object-fit:contain;opacity:0.4;filter:saturate(0) brightness(10);}
 .footer-col h4{
-  font-size:11px;letter-spacing:0.18em;text-transform:uppercase;
-  color:var(--orange);margin-bottom:18px;
+  font-size:10px;letter-spacing:0.2em;text-transform:uppercase;
+  color:var(--red);margin-bottom:18px;
 }
 .footer-col a{
-  display:block;font-size:13px;color:var(--muted);
+  display:block;font-size:13px;color:rgba(255,255,255,0.45);
   text-decoration:none;margin-bottom:10px;
-  transition:color 0.3s;letter-spacing:0.02em;
+  transition:color 0.2s;
 }
-.footer-col a:hover{color:var(--cream);}
+.footer-col a:hover{color:#fff;}
 .footer-bottom{
   display:flex;justify-content:space-between;align-items:center;
-  padding-top:24px;border-top:1px solid rgba(255,255,255,0.05);
+  padding-top:24px;border-top:1px solid rgba(255,255,255,0.06);
   flex-wrap:wrap;gap:12px;
 }
-.footer-copy{font-size:11px;color:var(--mutedmore);letter-spacing:0.07em;}
-.footer-credit{font-size:10px;color:rgba(232,114,42,0.4);letter-spacing:0.08em;}
+.footer-copy{font-size:11px;color:rgba(255,255,255,0.25);letter-spacing:0.06em;}
+.footer-credit{font-size:10px;color:rgba(212,43,43,0.5);letter-spacing:0.08em;}
 
-/* ANIMATIONS */
+/* ── FUTURISTIC ANIMATIONS ── */
 @keyframes fadeUp{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
 @keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
-.reveal{opacity:0;transform:translateY(28px);transition:opacity 0.85s,transform 0.85s;}
+
+/* reveal on scroll */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity 0.9s,transform 0.9s;}
 .reveal.visible{opacity:1;transform:translateY(0);}
+.reveal-left{opacity:0;transform:translateX(-28px);transition:opacity 0.9s,transform 0.9s;}
+.reveal-left.visible{opacity:1;transform:translateX(0);}
+.reveal-right{opacity:0;transform:translateX(28px);transition:opacity 0.9s,transform 0.9s;}
+.reveal-right.visible{opacity:1;transform:translateX(0);}
+
+/* number counter animation */
+.count-num{transition:all 0.5s;}
 
 /* ── MOBILE ── */
-@media(max-width:1024px){
-  .topbar{display:none;}
-  .services-grid{grid-template-columns:repeat(2,1fr);}
-  .footer-top{grid-template-columns:1fr 1fr;gap:32px;}
-}
-@media(max-width:860px){
+@media(max-width:900px){
+  .topbar{padding:8px 20px;}
+  .topbar-left{gap:14px;}
+  .topbar-left a:nth-child(2){display:none;}
   nav{padding:0 20px;}
   .nav-links{display:none;}
   .hamburger{display:flex;}
 
-  .hero{grid-template-columns:1fr;height:auto;min-height:100svh;}
-  .hero-left{padding:100px 24px 60px;order:1;}
-  .hero-left::after{display:none;}
-  .hero-right{height:300px;order:0;}
-  .hero-right::before{background:linear-gradient(to bottom,transparent 40%,var(--navy) 100%);}
-  .search-bar{
-    padding:20px 24px;flex-direction:column;gap:12px;
-    position:static;
-  }
-  .search-inner{flex-direction:column;gap:0;}
-  .search-field{border-right:1px solid rgba(255,255,255,0.08);border-bottom:none;}
-  .search-field:last-of-type{border-bottom:none;}
-  .search-btn{height:48px;width:100%;}
+  .hero{grid-template-columns:1fr;min-height:auto;}
+  .hero-left{padding:80px 24px 32px;order:1;}
+  .hero-left::before{display:none;}
+  .hero-right{height:280px;order:0;}
+  .hero h1{font-size:clamp(40px,10vw,60px);}
+  .hero-actions{flex-direction:column;align-items:stretch;}
+  .btn-primary,.btn-outline{text-align:center;justify-content:center;}
+  .hero-trust{gap:0;overflow-x:auto;}
+  .trust-item{min-width:100px;padding-right:16px;margin-right:16px;}
+  .hud-card{display:none;}
+  .hero-search{position:static;border-top:2px solid var(--red);}
+  .search-tabs{padding:0 20px;}
+  .search-row{padding:16px 20px;flex-direction:column;gap:0;}
+  .sf{border-right:1px solid var(--border);border-bottom:none;width:100%;}
+  .sf:last-of-type{border-bottom:none;}
+  .search-cta{height:48px;justify-content:center;width:100%;}
 
-  .services-strip{padding:0 20px;}
+  .svc-strip{padding:0 20px;}
   .destinations{padding:72px 20px;}
   .dest-grid{
     grid-template-columns:1fr;
     grid-template-rows:auto;
-    gap:8px;
   }
-  .dest-card-main{grid-row:span 1;height:280px;}
+  .dest-main{grid-row:span 1;height:280px;}
   .dest-card{height:200px;}
+  .dest-info{padding:20px;}
 
-  .services-full{padding:72px 20px;}
-  .services-header{grid-template-columns:1fr;}
-  .services-grid{grid-template-columns:1fr;}
+  .services{padding:72px 20px;}
+  .svc-grid{grid-template-columns:1fr 1fr;gap:4px;}
 
   .whyus{grid-template-columns:1fr;padding:72px 20px;gap:48px;}
   .whyus-visual{height:280px;}
-  .wu-badge{right:0;bottom:12px;}
+  .wv-badge{right:0;bottom:0;}
+  .vals{grid-template-columns:1fr;}
 
   .trending{padding:72px 20px;}
-  .trending-grid{grid-template-columns:1fr;}
+  .trend-grid{grid-template-columns:1fr;}
 
   .offices{padding:72px 20px;}
   .offices-grid{grid-template-columns:1fr;}
 
   .cta-section{padding:80px 24px;}
-  .cta-contacts{flex-direction:column;gap:20px;align-items:center;}
+  .cta-contacts{flex-direction:column;gap:16px;align-items:center;}
 
   footer{padding:48px 24px 32px;}
-  .footer-top{grid-template-columns:1fr;}
+  .footer-top{grid-template-columns:1fr 1fr;gap:28px;}
   .footer-bottom{flex-direction:column;text-align:center;}
-
-  .hero-trust{gap:20px;}
-  .trust-divider{display:none;}
-  .hero-actions{flex-direction:column;align-items:stretch;}
-  .btn-primary,.btn-outline{text-align:center;justify-content:center;}
-  .values-grid{grid-template-columns:1fr;}
 }
-@media(max-width:400px){
-  .hero h1{font-size:36px;}
+
+@media(max-width:480px){
+  .hero h1{font-size:38px;}
+  .svc-grid{grid-template-columns:1fr;}
+  .footer-top{grid-template-columns:1fr;}
+  .trust-item:nth-child(4){display:none;}
 }
 </style>
 </head>
 <body>
 
-<!-- TOPBAR -->
+<!-- FUTURISTIC SCAN LINE -->
+<div class="scan-overlay"><div class="scan-line"></div></div>
+
+<!-- TOPBAR — contact always visible, HEATMAP: top-right is trust zone -->
 <div class="topbar">
   <div class="topbar-left">
-    <a href="tel:+97143355559">
-      <svg class="ti" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 01.01 2.18 2 2 0 012 .01h3a2 2 0 012 1.72c.13 1 .36 1.97.71 2.91a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.16-1.16a2 2 0 012.11-.45c.94.35 1.91.58 2.91.71A2 2 0 0122 16.92z"/></svg>
-      +971 4 33 55 559
-    </a>
-    <a href="https://api.whatsapp.com/send?phone=97156335559" target="_blank">
-      <svg class="ti" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M11.99 2C6.476 2 2 6.477 2 11.99c0 1.761.459 3.417 1.261 4.864L2 22l5.278-1.238A9.954 9.954 0 0011.99 22C17.523 22 22 17.523 22 11.99 22 6.477 17.523 2 11.99 2z"/></svg>
-      +971 56 3355559
-    </a>
-    <a href="mailto:online@uranustravel.com">
-      <svg class="ti" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-      online@uranustravel.com
-    </a>
+    <a href="tel:+97143355559">📞 +971 4 33 55 559</a>
+    <a href="https://api.whatsapp.com/send?phone=97156335559" target="_blank">💬 +971 56 3355559</a>
+    <a href="mailto:online@uranustravel.com">✉ online@uranustravel.com</a>
   </div>
   <div class="topbar-right">
-    <span class="iata-badge">IATA Accredited</span>
-    <span>Trusted Since 1994</span>
+    <span class="tb-badge">IATA Accredited</span>
+    <span>Dubai Since 1994</span>
   </div>
 </div>
 
 <!-- NAV -->
 <nav>
-  <a href="https://www.uranustravel.com"><img src="https://www.uranustravel.com/images/logo.png" alt="Uranus Travel & Tours" class="nav-logo" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none;font-family:'Tenor Sans',serif;font-size:18px;color:var(--cream)">Uranus <span style="color:var(--orange)">Travel</span></span></a>
+  <a href="https://www.uranustravel.com" class="nav-logo">
+    <img src="https://www.uranustravel.com/images/logo.png" alt="Uranus Travel"
+      onerror="this.style.display='none';document.querySelector('.nav-logo-text').style.display='block'">
+    <span class="nav-logo-text">Uranus <span>Travel</span></span>
+  </a>
   <ul class="nav-links">
     <li><a href="https://www.uranustravel.com/Holidays.aspx" target="_blank">Holidays</a></li>
     <li><a href="https://www.uranustravel.com/Cruises" target="_blank">Cruises</a></li>
@@ -755,7 +908,7 @@ footer{
     <li><a href="https://www.uranustravel.com/corporate-travel" target="_blank">Corporate</a></li>
     <li><a href="https://www.uranustravel.com/mice" target="_blank">MICE</a></li>
     <li><a href="https://www.uranustravel.com/about-us" target="_blank">About</a></li>
-    <li><a href="https://www.uranustravel.com/contact-us" class="nav-book" target="_blank">Get a Quote</a></li>
+    <li><a href="https://www.uranustravel.com/contact-us" class="nav-book" target="_blank">Get a Quote →</a></li>
   </ul>
   <button class="hamburger" id="hbg"><span></span><span></span><span></span></button>
 </nav>
@@ -767,8 +920,8 @@ footer{
   <a href="https://www.uranustravel.com/Visa" class="ml" target="_blank">Visa</a>
   <a href="https://www.uranustravel.com/corporate-travel" class="ml" target="_blank">Corporate</a>
   <a href="https://www.uranustravel.com/about-us" class="ml" target="_blank">About</a>
-  <a href="https://www.uranustravel.com/contact-us" class="mob-book ml" target="_blank">Get a Quote</a>
-  <div class="mob-contact-row">
+  <a href="https://www.uranustravel.com/contact-us" class="mob-cta ml" target="_blank">Get a Quote</a>
+  <div class="mob-contacts">
     <a href="tel:+97143355559" class="ml">+971 4 33 55 559</a>
     <a href="mailto:online@uranustravel.com" class="ml">online@uranustravel.com</a>
   </div>
@@ -777,270 +930,263 @@ footer{
 <!-- HERO -->
 <section class="hero">
   <div class="hero-left">
-    <div class="hero-eyebrow">Dubai's Premier Travel Agency</div>
-    <h1>Your World.<br>Crafted with<br><span>Precision.</span></h1>
-    <p class="hero-sub">From quick getaways to global odysseys — Uranus Travel has been crafting extraordinary journeys for over 30 years. IATA accredited. Dubai trusted.</p>
+    <div class="hero-pre">Dubai's Premier Travel Agency</div>
+    <h1>
+      <span class="line">The World</span>
+      <span class="line">Is Waiting</span>
+      <span class="line red">For You.</span>
+    </h1>
+    <p class="hero-sub">From quick getaways to global odysseys — Uranus Travel has been crafting extraordinary journeys for over 30 years. IATA accredited. Dubai trusted. Expert guided.</p>
+    <!-- HEATMAP: Primary CTA — bold, high contrast, top-left quadrant -->
     <div class="hero-actions">
-      <a href="https://www.uranustravel.com/Holidays.aspx" class="btn-primary" target="_blank">Explore Holidays</a>
-      <a href="https://www.uranustravel.com/contact-us" class="btn-outline" target="_blank">Get a Free Quote →</a>
+      <a href="https://www.uranustravel.com/Holidays.aspx" class="btn-primary" target="_blank">Explore Holidays →</a>
+      <a href="https://www.uranustravel.com/contact-us" class="btn-outline" target="_blank">Free Quote</a>
     </div>
+    <!-- HEATMAP: Trust signals directly below primary CTA -->
     <div class="hero-trust">
-      <div class="trust-item"><span class="trust-num">30+</span>Years of Excellence</div>
-      <div class="trust-divider"></div>
-      <div class="trust-item"><span class="trust-num">65+</span>Travel Experts</div>
-      <div class="trust-divider"></div>
-      <div class="trust-item"><span class="trust-num">2</span>Dubai Offices</div>
-      <div class="trust-divider"></div>
-      <div class="trust-item"><span class="trust-num">IATA</span>Accredited Agent</div>
-    </div>
-  </div>
-  <div class="hero-right">
-    <div class="hero-img-grid">
-      <img class="hero-img-main" src="https://www.uranustravel.com/images/Promotions/Holidays/Explore%20Asia.jpg" alt="Explore Asia" loading="eager">
-      <img src="https://www.uranustravel.com/images/Promotions/Holidays/Explore%20Africa.jpg" alt="Explore Africa" loading="eager">
-      <img src="https://www.uranustravel.com/images/Promotions/Holidays/Explore%20America.jpg" alt="Explore America" loading="eager">
+      <div class="trust-item">
+        <div class="trust-num" data-count="30">30+</div>
+        <div class="trust-label">Years of Excellence</div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-num" data-count="65">65+</div>
+        <div class="trust-label">Travel Experts</div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-num" data-count="2">2</div>
+        <div class="trust-label">Dubai Offices</div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-num">IATA</div>
+        <div class="trust-label">Accredited Agent</div>
+      </div>
     </div>
   </div>
 
-  <!-- SEARCH BAR -->
-  <div class="search-bar">
-    <div style="width:100%">
-      <div class="search-tab">
-        <div class="stab active" onclick="setTab(this)">Holidays</div>
-        <div class="stab" onclick="setTab(this)">Flights</div>
-        <div class="stab" onclick="setTab(this)">Hotels</div>
-        <div class="stab" onclick="setTab(this)">Visa</div>
-        <div class="stab" onclick="setTab(this)">Insurance</div>
-      </div>
-      <div class="search-inner">
-        <input class="search-field" type="text" placeholder="Where do you want to go?">
-        <input class="search-field" type="text" placeholder="Departure date">
-        <input class="search-field" type="text" placeholder="Return date">
-        <input class="search-field" type="text" placeholder="Travellers">
-        <button class="search-btn" onclick="window.open('https://www.uranustravel.com/Holidays.aspx','_blank')">Search</button>
-      </div>
+  <div class="hero-right">
+    <div class="hero-img-grid">
+      <img class="hig-main" src="https://www.uranustravel.com/images/Promotions/Holidays/Explore%20Asia.jpg" alt="Asia" loading="eager">
+      <img src="https://www.uranustravel.com/images/Promotions/Holidays/Explore%20Africa.jpg" alt="Africa" loading="eager">
+      <img src="https://www.uranustravel.com/images/Promotions/Holidays/Explore%20America.jpg" alt="America" loading="eager">
+    </div>
+    <!-- HEATMAP: floating HUD cards — reinforce trust in high-dwell zone -->
+    <div class="hud-card hud1">
+      <div class="hud-label"><span class="hud-dot"></span>Live Availability</div>
+      <div class="hud-value">15,000+</div>
+      <div class="hud-sub">Destinations worldwide</div>
+    </div>
+    <div class="hud-card hud2">
+      <div class="hud-label">Best Price Promise</div>
+      <div class="hud-value">✓ Guaranteed</div>
+      <div class="hud-sub">IATA accredited rates</div>
+    </div>
+  </div>
+
+  <!-- HEATMAP: Search bar — highest conversion element, pinned to bottom -->
+  <div class="hero-search">
+    <div class="search-tabs">
+      <div class="stab active" onclick="setTab(this)">✈ Holidays</div>
+      <div class="stab" onclick="setTab(this)">🛫 Flights</div>
+      <div class="stab" onclick="setTab(this)">🏨 Hotels</div>
+      <div class="stab" onclick="setTab(this)">🛂 Visa</div>
+      <div class="stab" onclick="setTab(this)">🛡 Insurance</div>
+    </div>
+    <div class="search-row">
+      <input class="sf" type="text" placeholder="Where do you want to go?">
+      <input class="sf" type="text" placeholder="Departure — DD/MM/YYYY">
+      <input class="sf" type="text" placeholder="Return — DD/MM/YYYY">
+      <input class="sf" type="text" placeholder="Travellers & Class">
+      <button class="search-cta" onclick="window.open('https://www.uranustravel.com/Holidays.aspx','_blank')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        Search
+      </button>
     </div>
   </div>
 </section>
 
-<!-- SERVICES STRIP -->
-<div class="services-strip">
-  <div class="services-row">
-    <a href="https://www.uranustravel.com/Holidays.aspx" class="svc-item" target="_blank">
-      <img src="https://www.uranustravel.com/images/flight-bg-ico.png" alt="" class="svc-icon">Holidays
-    </a>
-    <a href="#" class="svc-item" onclick="window.open('https://www.uranustravel.com/Holidays.aspx','_blank')" target="_blank">
-      <img src="https://www.uranustravel.com/images/flight-bg-ico.png" alt="" class="svc-icon">Flights
-    </a>
-    <a href="https://www.uranustravel.com/hotel" class="svc-item" target="_blank">
-      <img src="https://www.uranustravel.com/images/hotel-bg-ico.png" alt="" class="svc-icon">Hotels
-    </a>
-    <a href="https://www.uranustravel.com/Visa" class="svc-item" target="_blank">
-      <img src="https://www.uranustravel.com/images/discount-bg-ico.png" alt="" class="svc-icon">Visa
-    </a>
-    <a href="https://www.uranustravel.com/Travel-Insurance.aspx" class="svc-item" target="_blank">
-      <img src="https://www.uranustravel.com/images/discount-bg-ico.png" alt="" class="svc-icon">Insurance
-    </a>
-    <a href="https://www.uranustravel.com/Explore-UAE" class="svc-item" target="_blank">
-      <img src="https://www.uranustravel.com/images/flight-bg-ico.png" alt="" class="svc-icon">Activities
-    </a>
-    <a href="https://www.uranustravel.com/Cruises" class="svc-item" target="_blank">
-      <img src="https://www.uranustravel.com/images/flight-bg-ico.png" alt="" class="svc-icon">Cruises</a>
-    <a href="https://www.uranustravel.com/corporate-travel" class="svc-item" target="_blank">
-      <img src="https://www.uranustravel.com/images/hotel-bg-ico.png" alt="" class="svc-icon">Corporate
-    </a>
-    <a href="https://www.uranustravel.com/mice" class="svc-item" target="_blank">
-      <img src="https://www.uranustravel.com/images/discount-bg-ico.png" alt="" class="svc-icon">MICE
-    </a>
+<!-- SERVICES STRIP — HEATMAP: eye track left→right immediately after hero -->
+<div class="svc-strip">
+  <div class="svc-row">
+    <a href="https://www.uranustravel.com/Holidays.aspx" class="svc-item" target="_blank"><span class="svc-dot"></span>Holiday Packages</a>
+    <a href="https://www.uranustravel.com/Holidays.aspx" class="svc-item" target="_blank"><span class="svc-dot"></span>Flights</a>
+    <a href="https://www.uranustravel.com/hotel" class="svc-item" target="_blank"><span class="svc-dot"></span>Hotels</a>
+    <a href="https://www.uranustravel.com/Visa" class="svc-item" target="_blank"><span class="svc-dot"></span>Visa Services</a>
+    <a href="https://www.uranustravel.com/Travel-Insurance.aspx" class="svc-item" target="_blank"><span class="svc-dot"></span>Insurance</a>
+    <a href="https://www.uranustravel.com/Explore-UAE" class="svc-item" target="_blank"><span class="svc-dot"></span>UAE Activities</a>
+    <a href="https://www.uranustravel.com/Cruises" class="svc-item" target="_blank"><span class="svc-dot"></span>Cruises</a>
+    <a href="https://www.uranustravel.com/corporate-travel" class="svc-item" target="_blank"><span class="svc-dot"></span>Corporate Travel</a>
+    <a href="https://www.uranustravel.com/mice" class="svc-item" target="_blank"><span class="svc-dot"></span>MICE & Events</a>
   </div>
 </div>
 
-<!-- DESTINATIONS -->
+<!-- DESTINATIONS — HEATMAP: big visual left = primary attention -->
 <section class="destinations">
-  <div class="section-label reveal">Where to next</div>
-  <h2 class="section-title reveal">Explore the World's <span>Most Iconic</span> Destinations</h2>
-  <p class="section-sub reveal">From the ancient wonders of Asia to the wild landscapes of Africa — Uranus Travel opens every door, on every continent.</p>
+  <div class="section-eyebrow reveal">Where to next</div>
+  <h2 class="section-title reveal">Explore the World's Most <em>Iconic</em> Destinations</h2>
+  <p class="section-sub reveal">From ancient wonders across Asia to the wild landscapes of Africa — every journey starts with Uranus Travel.</p>
   <div class="dest-grid reveal">
-    <div class="dest-card dest-card-main">
+    <div class="dest-card dest-main">
       <img src="https://www.uranustravel.com/images/Promotions/Holidays/Explore%20Asia.jpg" alt="Asia">
       <div class="dest-info">
-        <div class="dest-region">Asia</div>
-        <div class="dest-name">Discover Asia</div>
-        <div class="dest-desc">Ancient temples, modern skylines, pristine beaches — Asia has it all. Thailand, Singapore, Bali, Japan and beyond.</div>
-        <a href="https://www.uranustravel.com/Asia" class="dest-tag" target="_blank">Explore →</a>
+        <div class="dest-region">Most Popular</div>
+        <div class="dest-name">Asia</div>
+        <div class="dest-tagline">Thailand · Singapore · Bali · Japan · Maldives</div>
+        <a href="https://www.uranustravel.com/Asia" class="dest-link" target="_blank">Explore Asia →</a>
       </div>
     </div>
     <div class="dest-card">
       <img src="https://www.uranustravel.com/images/Promotions/Holidays/Explore%20Africa.jpg" alt="Africa">
       <div class="dest-info">
-        <div class="dest-region">Africa</div>
-        <div class="dest-name">Wild Africa</div>
-        <div class="dest-desc">Safaris, landscapes, cultures.</div>
-        <a href="https://www.uranustravel.com/Africa" class="dest-tag" target="_blank">Explore →</a>
+        <div class="dest-region">Adventure</div>
+        <div class="dest-name">Africa</div>
+        <div class="dest-tagline">Safari · Wildlife · Landscapes</div>
+        <a href="https://www.uranustravel.com/Africa" class="dest-link" target="_blank">Explore →</a>
+      </div>
+    </div>
+    <div class="dest-card">
+      <img src="https://www.uranustravel.com/images/TrendingTours/WVA.jpg" alt="UAE">
+      <div class="dest-info">
+        <div class="dest-region">Local</div>
+        <div class="dest-name">Explore UAE</div>
+        <div class="dest-tagline">Desert Safaris · City Tours</div>
+        <a href="https://www.uranustravel.com/Explore-UAE" class="dest-link" target="_blank">Explore →</a>
       </div>
     </div>
     <div class="dest-card">
       <img src="https://www.uranustravel.com/images/Promotions/Holidays/Explore%20America.jpg" alt="America">
       <div class="dest-info">
-        <div class="dest-region">America</div>
-        <div class="dest-name">The Americas</div>
-        <div class="dest-desc">Natural wonders, iconic cities.</div>
-        <a href="https://www.uranustravel.com/America" class="dest-tag" target="_blank">Explore →</a>
+        <div class="dest-region">Americas</div>
+        <div class="dest-name">America</div>
+        <div class="dest-tagline">Icons · Nature · Cities</div>
+        <a href="https://www.uranustravel.com/America" class="dest-link" target="_blank">Explore →</a>
       </div>
     </div>
-    <div class="dest-card" style="height:280px">
+    <div class="dest-card">
       <img src="https://www.uranustravel.com/images/TrendingTours/Singapore%20Visa%20for%20Indians%20from%20Dubai.jpg" alt="Singapore">
       <div class="dest-info">
-        <div class="dest-region">Southeast Asia</div>
+        <div class="dest-region">Visa Special</div>
         <div class="dest-name">Singapore</div>
-        <div class="dest-desc">Authorized visa agent. Fast processing.</div>
-        <a href="https://www.uranustravel.com/Visa/Singapore-Visa" class="dest-tag" target="_blank">Get Visa →</a>
-      </div>
-    </div>
-    <div class="dest-card" style="height:280px">
-      <img src="https://www.uranustravel.com/images/TrendingTours/WVA.jpg" alt="UAE">
-      <div class="dest-info">
-        <div class="dest-region">UAE</div>
-        <div class="dest-name">Explore UAE</div>
-        <div class="dest-desc">Tours, desert safaris, activities.</div>
-        <a href="https://www.uranustravel.com/Explore-UAE" class="dest-tag" target="_blank">Explore →</a>
+        <div class="dest-tagline">Authorized Visa Agent — Fast Processing</div>
+        <a href="https://www.uranustravel.com/Visa/Singapore-Visa" class="dest-link" target="_blank">Get Visa →</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- SERVICES FULL -->
-<section class="services-full">
-  <div class="services-header reveal">
-    <div>
-      <div class="section-label">What we offer</div>
-      <h2 class="section-title">One Agency. <span>Every Service</span> You Need.</h2>
-    </div>
-    <p style="font-size:14px;color:var(--muted);line-height:1.8;letter-spacing:0.03em;">As a true one-stop shop, Uranus Travel handles everything — from your visa to your hotel to your return flight — so you travel without a single worry.</p>
-  </div>
-  <div class="services-grid">
+<!-- SERVICES -->
+<section class="services">
+  <div class="section-eyebrow reveal">Everything covered</div>
+  <h2 class="section-title reveal">One Agency. <em>Every Service.</em></h2>
+  <p class="section-sub reveal">Flights, hotels, visa, insurance, cruises, MICE — all under one trusted roof since 1994.</p>
+  <div class="svc-grid">
     <a href="https://www.uranustravel.com/Holidays.aspx" class="svc-card reveal" target="_blank">
-      <div class="svc-card-num">01</div>
-      <img src="https://www.uranustravel.com/images/flight-bg-ico.png" alt="" class="svc-card-icon">
-      <div class="svc-card-title">Holiday Packages</div>
-      <p class="svc-card-desc">Curated packages to Asia, Africa, Europe, Americas and beyond — all-inclusive, tailored to you.</p>
-      <span class="svc-card-arrow">→</span>
+      <div class="svc-n">01</div>
+      <div class="svc-icon-wrap"><img src="https://www.uranustravel.com/images/flight-bg-ico.png" alt=""></div>
+      <div class="svc-title">Holiday Packages</div>
+      <p class="svc-desc">Fully curated packages to every corner of the world — tailored to your budget and style.</p>
+      <div class="svc-arr">→</div>
     </a>
     <a href="https://www.uranustravel.com/Holidays.aspx" class="svc-card reveal" target="_blank">
-      <div class="svc-card-num">02</div>
-      <img src="https://www.uranustravel.com/images/flight-bg-ico.png" alt="" class="svc-card-icon">
-      <div class="svc-card-title">Flights Worldwide</div>
-      <p class="svc-card-desc">15,000+ destinations. Emirates, British Airways, Singapore Airlines and every major carrier.</p>
-      <span class="svc-card-arrow">→</span>
+      <div class="svc-n">02</div>
+      <div class="svc-icon-wrap"><img src="https://www.uranustravel.com/images/flight-bg-ico.png" alt=""></div>
+      <div class="svc-title">Flights Worldwide</div>
+      <p class="svc-desc">15,000+ destinations. Emirates, British Airways, Singapore Airlines and every major carrier.</p>
+      <div class="svc-arr">→</div>
     </a>
     <a href="https://www.uranustravel.com/hotel" class="svc-card reveal" target="_blank">
-      <div class="svc-card-num">03</div>
-      <img src="https://www.uranustravel.com/images/hotel-bg-ico.png" alt="" class="svc-card-icon">
-      <div class="svc-card-title">Hotel Reservations</div>
-      <p class="svc-card-desc">From budget stays to 5-star resorts — we find the best rates at the best properties worldwide.</p>
-      <span class="svc-card-arrow">→</span>
+      <div class="svc-n">03</div>
+      <div class="svc-icon-wrap"><img src="https://www.uranustravel.com/images/hotel-bg-ico.png" alt=""></div>
+      <div class="svc-title">Hotel Reservations</div>
+      <p class="svc-desc">Budget to 5-star worldwide. Best rates, best properties, guaranteed satisfaction.</p>
+      <div class="svc-arr">→</div>
     </a>
     <a href="https://www.uranustravel.com/Visa" class="svc-card reveal" target="_blank">
-      <div class="svc-card-num">04</div>
-      <img src="https://www.uranustravel.com/images/discount-bg-ico.png" alt="" class="svc-card-icon">
-      <div class="svc-card-title">Global Visa Services</div>
-      <p class="svc-card-desc">Authorized Singapore Visa Agent. Visa assistance for destinations worldwide, done right.</p>
-      <span class="svc-card-arrow">→</span>
+      <div class="svc-n">04</div>
+      <div class="svc-icon-wrap"><img src="https://www.uranustravel.com/images/discount-bg-ico.png" alt=""></div>
+      <div class="svc-title">Visa Services</div>
+      <p class="svc-desc">Authorized Singapore Visa agent. Expert assistance for global visa applications.</p>
+      <div class="svc-arr">→</div>
     </a>
     <a href="https://www.uranustravel.com/Travel-Insurance.aspx" class="svc-card reveal" target="_blank">
-      <div class="svc-card-num">05</div>
-      <img src="https://www.uranustravel.com/images/discount-bg-ico.png" alt="" class="svc-card-icon">
-      <div class="svc-card-title">Travel Insurance</div>
-      <p class="svc-card-desc">Comprehensive travel insurance with Covid-19 coverage — travel with complete peace of mind.</p>
-      <span class="svc-card-arrow">→</span>
+      <div class="svc-n">05</div>
+      <div class="svc-icon-wrap"><img src="https://www.uranustravel.com/images/discount-bg-ico.png" alt=""></div>
+      <div class="svc-title">Travel Insurance</div>
+      <p class="svc-desc">Full coverage including Covid-19. Travel anywhere with complete peace of mind.</p>
+      <div class="svc-arr">→</div>
     </a>
     <a href="https://www.uranustravel.com/Cruises" class="svc-card reveal" target="_blank">
-      <div class="svc-card-num">06</div>
-      <img src="https://www.uranustravel.com/images/flight-bg-ico.png" alt="" class="svc-card-icon">
-      <div class="svc-card-title">Cruise Packages</div>
-      <p class="svc-card-desc">Set sail across the world's finest routes — Mediterranean, Caribbean, Asia and more.</p>
-      <span class="svc-card-arrow">→</span>
+      <div class="svc-n">06</div>
+      <div class="svc-icon-wrap"><img src="https://www.uranustravel.com/images/flight-bg-ico.png" alt=""></div>
+      <div class="svc-title">Cruise Packages</div>
+      <p class="svc-desc">Mediterranean, Caribbean, Asia — set sail on the world's finest cruise routes.</p>
+      <div class="svc-arr">→</div>
     </a>
     <a href="https://www.uranustravel.com/corporate-travel" class="svc-card reveal" target="_blank">
-      <div class="svc-card-num">07</div>
-      <img src="https://www.uranustravel.com/images/hotel-bg-ico.png" alt="" class="svc-card-icon">
-      <div class="svc-card-title">Corporate Travel</div>
-      <p class="svc-card-desc">End-to-end corporate travel management — flights, hotels, ground transport and more.</p>
-      <span class="svc-card-arrow">→</span>
+      <div class="svc-n">07</div>
+      <div class="svc-icon-wrap"><img src="https://www.uranustravel.com/images/hotel-bg-ico.png" alt=""></div>
+      <div class="svc-title">Corporate Travel</div>
+      <p class="svc-desc">End-to-end business travel management for Dubai's leading companies.</p>
+      <div class="svc-arr">→</div>
     </a>
     <a href="https://www.uranustravel.com/mice" class="svc-card reveal" target="_blank">
-      <div class="svc-card-num">08</div>
-      <img src="https://www.uranustravel.com/images/discount-bg-ico.png" alt="" class="svc-card-icon">
-      <div class="svc-card-title">MICE & Events</div>
-      <p class="svc-card-desc">Meetings, Incentives, Conferences, Exhibitions — we handle every detail at every scale.</p>
-      <span class="svc-card-arrow">→</span>
+      <div class="svc-n">08</div>
+      <div class="svc-icon-wrap"><img src="https://www.uranustravel.com/images/discount-bg-ico.png" alt=""></div>
+      <div class="svc-title">MICE & Events</div>
+      <p class="svc-desc">Meetings, Incentives, Conferences, Exhibitions — we handle every detail at scale.</p>
+      <div class="svc-arr">→</div>
     </a>
   </div>
 </section>
 
 <!-- WHY US -->
 <section class="whyus">
-  <div class="whyus-visual reveal">
-    <div class="wu-img wu-img-tall">
+  <div class="whyus-visual reveal-left">
+    <div class="wv-img wv-tall">
       <img src="https://www.uranustravel.com/images/Promotions/Holidays/Explore%20Asia.jpg" alt="Travel">
+      <div class="wv-corner tl"></div>
     </div>
-    <div class="wu-img">
-      <img src="https://www.uranustravel.com/images/Promotions/Holidays/Explore%20Africa.jpg" alt="Africa">
-    </div>
-    <div class="wu-img">
+    <div class="wv-img">
       <img src="https://www.uranustravel.com/images/TrendingTours/WVA.jpg" alt="UAE">
     </div>
-    <div class="wu-badge">
-      <div class="wu-badge-num">30+</div>
-      <div class="wu-badge-label">Years Trusted</div>
+    <div class="wv-img">
+      <img src="https://www.uranustravel.com/images/Promotions/Holidays/Explore%20Africa.jpg" alt="Africa">
+      <div class="wv-corner br"></div>
+    </div>
+    <div class="wv-badge">
+      <div class="wvb-num">1994</div>
+      <div class="wvb-label">Est. Dubai</div>
     </div>
   </div>
-  <div class="whyus-text">
-    <div class="section-label reveal">Why Uranus Travel</div>
-    <h2 class="section-title reveal">Dubai's Most <span>Trusted</span> Name in Travel.</h2>
-    <p class="reveal">Founded in 1994, Uranus Travel & Tours has built three decades of trust serving travellers from Dubai to the world. Under MD Mr. Vijay Bhatia, our 65+ expert team delivers journeys that exceed expectations — every time.</p>
-    <p class="reveal">IATA accredited and partnered with Veena World as their exclusive Overseas Sales Agent, we bring you access, expertise, and the personal touch that larger platforms simply cannot match.</p>
-    <div class="values-grid reveal">
-      <div class="val-item">
-        <div class="val-icon">🏆</div>
-        <div class="val-title">IATA Accredited</div>
-        <div class="val-desc">Globally recognised, Dubai certified. You're in safe hands.</div>
-      </div>
-      <div class="val-item">
-        <div class="val-icon">👥</div>
-        <div class="val-title">65+ Experts</div>
-        <div class="val-desc">Real humans. Real experience. Not chatbots.</div>
-      </div>
-      <div class="val-item">
-        <div class="val-icon">🌍</div>
-        <div class="val-title">One-Stop Shop</div>
-        <div class="val-desc">Every travel service under one trusted roof.</div>
-      </div>
-      <div class="val-item">
-        <div class="val-icon">⭐</div>
-        <div class="val-title">30+ Years</div>
-        <div class="val-desc">Trusted by generations of travellers since 1994.</div>
-      </div>
+  <div class="whyus-text reveal-right">
+    <div class="section-eyebrow">Why Uranus Travel</div>
+    <h2 class="section-title">Dubai's Most <em>Trusted</em> Travel Partner.</h2>
+    <p>Founded in 1994, Uranus Travel & Tours has spent over three decades crafting journeys that exceed every expectation. Under MD Mr. Vijay Bhatia, our team of 65+ specialists brings unmatched expertise to every booking.</p>
+    <p>IATA accredited. Partnered with Veena World as exclusive Overseas Sales Agent. Dubai's Best award recipient. Two convenient offices. One mission — your perfect journey.</p>
+    <div class="vals">
+      <div class="val"><div class="val-icon">🏆</div><div class="val-t">IATA Accredited</div><div class="val-d">Globally recognised, Dubai certified.</div></div>
+      <div class="val"><div class="val-icon">👥</div><div class="val-t">65+ Experts</div><div class="val-d">Real humans, real experience, real advice.</div></div>
+      <div class="val"><div class="val-icon">🌍</div><div class="val-t">One-Stop Shop</div><div class="val-d">Every travel service under one roof.</div></div>
+      <div class="val"><div class="val-icon">⭐</div><div class="val-t">30+ Years</div><div class="val-d">Trusted by generations since 1994.</div></div>
     </div>
   </div>
 </section>
 
 <!-- TRENDING -->
 <section class="trending">
-  <div class="section-label reveal">Featured right now</div>
-  <h2 class="section-title reveal">Trending <span>Packages</span> & Offers</h2>
-  <div class="trending-grid">
+  <div class="section-eyebrow reveal">Hot right now</div>
+  <h2 class="section-title reveal">Trending Packages <em>&amp; Deals</em></h2>
+  <div class="trend-grid">
     <a href="https://www.uranustravel.com/womensday" class="trend-card reveal" target="_blank">
       <div class="trend-img">
         <img src="https://www.uranustravel.com/images/TrendingTours/women's%20day%20special.jpg" alt="Women's Special">
       </div>
       <div class="trend-body">
         <div class="trend-tag">Special Package</div>
-        <div class="trend-title">She Matters — Women's Special Holiday</div>
-        <p class="trend-desc">A curated travel experience designed for women — safe, luxurious, and empowering.</p>
-        <div class="trend-footer">
-          <div class="trend-price"><strong>Special Rates</strong>Limited time</div>
-          <div class="trend-btn">View Package →</div>
+        <div class="trend-title">She Matters — Women's Holiday</div>
+        <p class="trend-desc">A curated travel experience designed for women. Safe, luxurious, empowering.</p>
+        <div class="trend-foot">
+          <div class="trend-price"><strong>Special Rates</strong><span>Limited time offer</span></div>
+          <div class="trend-cta">View →</div>
         </div>
       </div>
     </a>
@@ -1049,12 +1195,12 @@ footer{
         <img src="https://www.uranustravel.com/images/TrendingTours/Holiday%20Packages%20Offers.png" alt="Holiday Offers">
       </div>
       <div class="trend-body">
-        <div class="trend-tag">Hot Deal</div>
+        <div class="trend-tag">Best Value</div>
         <div class="trend-title">Holiday Package Offers</div>
-        <p class="trend-desc">Our best value packages across Asia, Europe and beyond — curated for every budget.</p>
-        <div class="trend-footer">
-          <div class="trend-price"><strong>Best Prices</strong>Guaranteed</div>
-          <div class="trend-btn">View Offers →</div>
+        <p class="trend-desc">Our best-value packages across Asia, Europe and the Americas — every budget.</p>
+        <div class="trend-foot">
+          <div class="trend-price"><strong>Best Prices</strong><span>Guaranteed</span></div>
+          <div class="trend-cta">View →</div>
         </div>
       </div>
     </a>
@@ -1063,12 +1209,12 @@ footer{
         <img src="https://www.uranustravel.com/images/TrendingTours/Singapore%20Visa%20for%20Indians%20from%20Dubai.jpg" alt="Singapore Visa">
       </div>
       <div class="trend-body">
-        <div class="trend-tag">Visa Service</div>
+        <div class="trend-tag">Visa Fast-Track</div>
         <div class="trend-title">Singapore Visa — Authorized Agent</div>
-        <p class="trend-desc">Fast, reliable Singapore visa processing. Uranus is Dubai's authorized Singapore visa agent.</p>
-        <div class="trend-footer">
-          <div class="trend-price"><strong>Fast Processing</strong>Authorized Agent</div>
-          <div class="trend-btn">Apply Now →</div>
+        <p class="trend-desc">Fast, reliable Singapore visa processing from Dubai's authorized agent.</p>
+        <div class="trend-foot">
+          <div class="trend-price"><strong>Fast Processing</strong><span>Authorized Agent</span></div>
+          <div class="trend-cta">Apply →</div>
         </div>
       </div>
     </a>
@@ -1077,52 +1223,41 @@ footer{
 
 <!-- OFFICES -->
 <section class="offices">
-  <div class="section-label reveal">Find us in Dubai</div>
-  <h2 class="section-title reveal">Two Offices. <span>One Mission.</span></h2>
+  <div class="section-eyebrow reveal">Find us in Dubai</div>
+  <h2 class="section-title reveal">Two Offices. <em>One Mission.</em></h2>
   <div class="offices-grid reveal">
-    <div class="office-card">
+    <div class="office">
       <div class="office-tag">Head Office</div>
       <div class="office-name">Oud Metha — Dubai HQ</div>
-      <p class="office-detail">1G/2B Sultan Business Center,<br>Next to Lamcy Plaza, Oud Metha.<br>P.O.Box 8611, Dubai, UAE</p>
-      <p class="office-detail" style="margin-top:16px">
-        <a href="tel:+97143355559">📞 +971 4 33 55 559</a>
-      </p>
-      <p class="office-detail">
-        <a href="https://api.whatsapp.com/send?phone=97156335559" target="_blank">💬 +971 56 3355559 (WhatsApp)</a>
-      </p>
-      <p class="office-detail">
-        <a href="mailto:online@uranustravel.com">✉ online@uranustravel.com</a>
-      </p>
+      <p class="office-detail">1G/2B Sultan Business Center,<br>Next to Lamcy Plaza, Oud Metha. P.O.Box 8611</p>
+      <p class="office-detail" style="margin-top:14px"><a href="tel:+97143355559">📞 +971 4 33 55 559</a></p>
+      <p class="office-detail"><a href="https://api.whatsapp.com/send?phone=97156335559" target="_blank">💬 +971 56 3355559</a></p>
+      <p class="office-detail"><a href="mailto:online@uranustravel.com">✉ online@uranustravel.com</a></p>
     </div>
-    <div class="office-card">
+    <div class="office">
       <div class="office-tag">Branch Office</div>
-      <div class="office-name">Deira Branch — Gold Souq</div>
-      <p class="office-detail">8/9G, Al Aaraf Hotel Building,<br>Near Deira Gold Souq,<br>Dubai, UAE</p>
-      <p class="office-detail" style="margin-top:16px">
-        <a href="tel:+97142255444">📞 +971 4 22 55 444</a>
-      </p>
-      <p class="office-detail" style="margin-top:16px;font-size:12px;color:var(--mutedmore);">
-        Mon–Sat: 9:00 AM – 6:00 PM<br>
-        Sunday: 10:00 AM – 4:00 PM
-      </p>
+      <div class="office-name">Deira — Near Gold Souq</div>
+      <p class="office-detail">8/9G, Al Aaraf Hotel Building,<br>Near Deira Gold Souq, Dubai, UAE</p>
+      <p class="office-detail" style="margin-top:14px"><a href="tel:+97142255444">📞 +971 4 22 55 444</a></p>
+      <p class="office-detail" style="margin-top:14px;font-size:12px;color:var(--gray);">Mon–Sat: 9:00 AM – 6:00 PM<br>Sunday: 10:00 AM – 4:00 PM</p>
     </div>
   </div>
 </section>
 
-<!-- CTA -->
+<!-- CTA — RED SECTION, HEATMAP: maximum contrast = maximum conversion -->
 <section class="cta-section">
-  <h2 class="reveal">Ready to Plan Your <span>Perfect Journey?</span></h2>
-  <p class="reveal">Speak with one of our 65+ travel experts today. No pressure — just real advice, real deals, and 30 years of experience working for you.</p>
+  <h2 class="reveal">Ready for Your<br>Next Adventure?</h2>
+  <p class="reveal">Speak with one of our 65+ travel experts today. No pressure — just honest advice, unbeatable rates, and 30 years of trust working for you.</p>
   <div class="cta-btns reveal">
-    <a href="https://www.uranustravel.com/contact-us" class="btn-primary" target="_blank">Get a Free Quote</a>
-    <a href="https://www.uranustravel.com/Holidays.aspx" class="btn-outline" target="_blank">Browse Holidays →</a>
+    <a href="https://www.uranustravel.com/contact-us" class="btn-white" target="_blank">Get a Free Quote</a>
+    <a href="https://www.uranustravel.com/Holidays.aspx" class="btn-red-outline" target="_blank">Browse All Holidays →</a>
   </div>
   <div class="cta-contacts reveal">
     <a href="tel:+97143355559" class="cta-contact">
       <div class="cta-contact-icon">📞</div>+971 4 33 55 559
     </a>
     <a href="https://api.whatsapp.com/send?phone=97156335559" class="cta-contact" target="_blank">
-      <div class="cta-contact-icon">💬</div>WhatsApp Us
+      <div class="cta-contact-icon">💬</div>WhatsApp Us Now
     </a>
     <a href="mailto:online@uranustravel.com" class="cta-contact">
       <div class="cta-contact-icon">✉</div>online@uranustravel.com
@@ -1134,8 +1269,8 @@ footer{
 <footer>
   <div class="footer-top">
     <div class="footer-brand">
-      <img src="https://www.uranustravel.com/images/uranus-logo.png" alt="Uranus Travel" onerror="this.style.display='none'">
-      <p>Dubai's leading travel agency since 1994. IATA accredited, 65+ experts, two convenient locations serving travellers across the UAE and beyond.</p>
+      <img src="https://www.uranustravel.com/images/uranus-logo.png" alt="Uranus Travel" class="footer-logo-img" onerror="this.style.display='none'">
+      <p>Dubai's leading travel agency since 1994. IATA accredited, 65+ travel experts, two convenient offices across the UAE.</p>
       <div class="footer-accreds">
         <img src="https://www.uranustravel.com/images/other-logos.png" alt="IATA">
         <img src="https://www.uranustravel.com/images/vw-logo.png" alt="Veena World">
@@ -1158,7 +1293,7 @@ footer{
       <a href="https://www.uranustravel.com/America" target="_blank">America</a>
       <a href="https://www.uranustravel.com/Explore-UAE" target="_blank">Explore UAE</a>
       <a href="https://www.uranustravel.com/corporate-travel" target="_blank">Corporate Travel</a>
-      <a href="https://www.uranustravel.com/mice" target="_blank">MICE</a>
+      <a href="https://www.uranustravel.com/mice" target="_blank">MICE & Events</a>
     </div>
     <div class="footer-col">
       <h4>Company</h4>
@@ -1177,11 +1312,13 @@ footer{
 </footer>
 
 <script>
+  /* search tabs */
   function setTab(el){
     document.querySelectorAll('.stab').forEach(t=>t.classList.remove('active'));
     el.classList.add('active');
   }
 
+  /* hamburger */
   const hbg=document.getElementById('hbg');
   const mob=document.getElementById('mobMenu');
   hbg.addEventListener('click',()=>{
@@ -1202,10 +1339,34 @@ footer{
     setTimeout(()=>mob.style.display='none',360);
   }));
 
+  /* scroll reveal */
   const obs=new IntersectionObserver(e=>{
-    e.forEach((en,i)=>{if(en.isIntersecting)setTimeout(()=>en.target.classList.add('visible'),i*80);});
+    e.forEach((en,i)=>{
+      if(en.isIntersecting) setTimeout(()=>en.target.classList.add('visible'),i*70);
+    });
   },{threshold:0.06});
-  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+  document.querySelectorAll('.reveal,.reveal-left,.reveal-right').forEach(el=>obs.observe(el));
+
+  /* futuristic number counter on hero load */
+  function animateCount(el, target, suffix){
+    let start=0;
+    const duration=1800;
+    const step=Math.ceil(target/60);
+    const timer=setInterval(()=>{
+      start+=step;
+      if(start>=target){start=target;clearInterval(timer);}
+      el.textContent=start+suffix;
+    },duration/60);
+  }
+  window.addEventListener('load',()=>{
+    setTimeout(()=>{
+      const nums=document.querySelectorAll('.trust-num[data-count]');
+      nums.forEach(el=>{
+        const v=parseInt(el.dataset.count);
+        animateCount(el,v,'+');
+      });
+    },1000);
+  });
 </script>
 </body>
 </html>
